@@ -27,14 +27,14 @@ const businesses = [
 
 class App extends Component {
   searchYelp(term, location, sortBy) {
-    return console.log(`Searching Yelp with ${term}`)  
+    return console.log(`Searching Yelp with ${term}, ${location}, and ${sortBy}.`)  
   }
     
     render() {
     return (
      <div className="App">
         <h1>ravenous</h1>
-        <SearchBar />
+        <SearchBar searchYelp={this.searchYelp} />
         <BusinessList businesses={businesses}/> 
      </div>
 
