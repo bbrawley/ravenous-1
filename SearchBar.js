@@ -1,31 +1,7 @@
 import React from 'react';
 import './SearchBar.css';
 
-const sortByOptions = {
-    bestMatch:'best_match',
-    highestRated: 'rating',
-    mostReviewed:'review_count', 
-}
 
-const getSortByClass(sortByOption)=> {
-    if(this.state === sortByOption){
-        return 'active';
-    } else{
-        return '';
-    }
-}
-
-const handleSortByChange(sortByOption)=> {
-    this.setState({sortBy: sortByOption});
-}
-
-const handleTermChange(event)=>{
-    this.setState({term: event.target.value})
-}
-
-const handleLocationChange(event)=> {
-    this.setState({location: event.target.value})
-}
 class SearchBar extends React.Component{
     constructor(props){
         super(props);
@@ -39,7 +15,32 @@ class SearchBar extends React.Component{
         this.handleLocationChange = this.handleLocationChange.bind(this);
     }
     
-  renderSortByOptions() {
+    const sortByOptions = {
+        bestMatch:'best_match',
+        highestRated: 'rating',
+        mostReviewed:'review_count', 
+    }
+
+    const getSortByClass(sortByOption)=> {
+        if(this.state === sortByOption){
+            return 'active';
+        } else{
+            return '';
+        }
+    }
+
+    const handleSortByChange(sortByOption)=> {
+        this.setState({sortBy: sortByOption});
+    }
+
+    const handleTermChange(event)=>{
+        this.setState({term: event.target.value})
+    }
+
+    const handleLocationChange(event)=> {
+        this.setState({location: event.target.value})
+    }
+    renderSortByOptions() {
        return Object.keys(sortByOptions).map(sortByOption =>{
            const sortByOptionValue = sortByOptions[sortByOption];
            return <li className={getSortByClass(sortByOptionValue)} onClick={handleSortByChange.bind(this.sortByOptionValue)} key={sortByOptionValue}>{sortByOption}</li>;
