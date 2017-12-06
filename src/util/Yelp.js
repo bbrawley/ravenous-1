@@ -1,9 +1,9 @@
 const clientId = 'qMDSzDASESDTJCTQkBGJHA';
 const secret = 'sZx4lSehU1qXrxuDn2yXyF4ajAGoNWbu5mNWtcnM3M151T4OCbFaIulmJYTonWrc';
-const accessToken =
+let accessToken;
       
 const Yelp = {
-  const getAccessToken() {
+  getAccessToken() {
       if(accessToken){
           return new Promise(resolve => resolve(accessToken));
             }
@@ -17,7 +17,7 @@ const Yelp = {
             )
           }
         },
-        const search(term, location, sortBy) {
+     search(term, location, sortBy) {
             return Yelp.getAccessToken().then(() => {return fetch('https://api.yelp.com/v3/businesses/search?term=TERM&location=LOCATION&sort_by=SORT_BY',
              {headers: 
               {Authorization:`Bearer ${accessToken}`}

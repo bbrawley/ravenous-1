@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import BusinessList from './Components/BusinessList/BusinessList';
 import SearchBar from './Components/SearchBar/SearchBar';
-import Yelp from './src/util/Yelp';
+import Yelp from './util/Yelp';
 import logo from './logo.svg';
 
 
@@ -16,7 +16,7 @@ class App extends Component {
     }
   searchYelp(term, location, sortBy) {
     return Yelp.search(term, location, sortBy).then(businesses =>(
-    setState({businesses: businesses})
+    this.setState({businesses: businesses})
     ));  
   }
     
@@ -25,7 +25,7 @@ class App extends Component {
        <div className="App">
         <h1>ravenous</h1>
         <SearchBar searchYelp={this.searchYelp} />
-        <BusinessList businesses={businesses}/> 
+        <BusinessList businesses={this.state.businesses}/> 
      </div>
 
     );
