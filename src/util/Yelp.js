@@ -8,13 +8,12 @@ const Yelp = {
           return new Promise(resolve => resolve(accessToken));
             }
       else{
-         return fetch(`https://api.yelp.com/oauth2/token?grant_type=client_credentials&client_id= ${clientId} &client_secret=${secret}`.fetch(https://cors-anywhere.herokuapp.com/),
+         return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/oauth2/token?grant_type=client_credentials&client_id=${clientId} &client_secret=${secret}`,
                {method: 'POST'}).then(response => {
                   return response.json();
                 }).then(jsonResponse => {
              accessToken = jsonResponse.access_token;
               })
-            )
           }
         },
      search(term, location, sortBy) {
@@ -22,8 +21,8 @@ const Yelp = {
              {headers: 
               {Authorization:`Bearer ${accessToken}`}
              })
-          }).then(
-            return fetch(`https://api.yelp.com/oauth2/token?grant_type=client_credentials&client_id= ${clientId} &client_secret=${secret}`.fetch(https://cors-anywhere.herokuapp.com/),
+          }).then(response => 
+            return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/oauth2/token?grant_type=client_credentials&client_id=${clientId} &client_secret=${secret}`,
                {method: 'POST'}).then(jsonResponse =>{
                 if(jsonResponse.businesses){
                     return jsonResponse.businesses.map(business => (
