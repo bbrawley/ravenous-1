@@ -17,6 +17,7 @@ const Yelp = {
           }
         },
      search(term, location, sortBy) {
+            console.log(jsonResponse.businesses);
             return Yelp.getAccessToken().then(() => {return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`,
              {headers: 
               {Authorization:`Bearer ${accessToken}`}
@@ -27,7 +28,7 @@ const Yelp = {
                     return jsonResponse.businesses.map(business => (
                         {
                             id: business.id,
-                            imageSrc: business.imageSrc,
+                            imageSrc: business.image_url,
                             name: business.name,
                             address: business.address,
                             city: business.city,

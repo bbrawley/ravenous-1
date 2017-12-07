@@ -3,6 +3,7 @@ import './Business.css';
 
 class Business extends React.Component {
   render() {
+      console.log(Business);
     return (
       <div className="Business">
         <div className="image-container">
