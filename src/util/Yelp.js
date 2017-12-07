@@ -8,7 +8,7 @@ const Yelp = {
           return new Promise(resolve => resolve(accessToken));
             }
       else{
-         return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/oauth2/token?grant_type=client_credentials&client_id=${clientId} &client_secret=${secret}`,
+         return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/oauth2/token?grant_type=client_credentials&client_id=${clientId}&client_secret=${secret}`,
                {method: 'POST'}).then(response => {
                   return response.json();
                 }).then(jsonResponse => {
@@ -22,8 +22,7 @@ const Yelp = {
               {Authorization:`Bearer ${accessToken}`}
              })
           }).then(response => 
-             fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/oauth2/token?grant_type=client_credentials&client_id=${clientId} &client_secret=${secret}`,
-               {method: 'POST'}).then(jsonResponse =>{
+             response.json()).then(jsonResponse =>{
                 if(jsonResponse.businesses){
                     return jsonResponse.businesses.map(business => (
                         {
@@ -42,7 +41,6 @@ const Yelp = {
                   )
                 }
             })
-          )
             
         }    
       }
